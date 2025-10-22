@@ -82,7 +82,17 @@ Given these observations, the macros demonstrate behaviors commonly associated w
 <img width="1624" height="938" alt="image" src="https://github.com/user-attachments/assets/a46a75c4-1906-4be6-bf78-61aa6d3cbbe7" />
 
 
-The detail history section provides the relevant date the events of the file hash was last investigated. The section further revealed that the file hash was firstly investigated on 01.02.2020 up to recently which is 17.10.2025 whcih is a call for sensitization to soc analzýst to take note of the IP address associated to this threat.
+The detail history section provides the relevant date the events of the file hash was last investigated. The section further revealed that the file hash was firstly investigated on 01.02.2020 up to recently which is 17.10.2025 whcih is a call for sensitization to soc analzýst to take note of the IP address and behavioural informations associated to this threat.
+
+## From Playbook: URlSCAN
+
+from the Urlscan, I can see that there were:
+- Two HTTP Transactions recorded from the page
+- The doamin was scanned 87 times previously which shows some signs of suspicion
+- The doamin IP address 177.11.52.83 and the IP Sofia machine interacted with 177.53.143.89 geographically both in Brazil but not on the same network which somehow represents different stages
+I will therefore say that the outcome of the URLSCAN to me is suspicious.
+
+<img width="1209" height="938" alt="image" src="https://github.com/user-attachments/assets/5e213aac-0df8-4260-a3f6-7b513e74499f" />
 
 
 ## From Playbook: Hybrid Analysis
@@ -103,16 +113,60 @@ With all indicators and findings so far, I can already accept that the file is m
 
 ## Check If Someone Requested the C2
 
+What is “command C2?
 
-I checked the C2 used bz the malware for beaconing with the IP section of Behaviour in the virus total. Also with the image above, we see that sofia machine accessed the malicious IP 17.53.143.89 and from the alert, with device action allowed. Therefore, I accepted accessed on playbook.
+C2 (short for Command and Control, often written “C2”) is the infrastructure and communication channel that an attacker uses to issue commands to malware running on compromised machines and to receive data back (logs, stolen files, status). 
+- A command C2 refers specifically to the command side of that channel, the mechanisms and messages the attacker sends to control infected hosts
+- I checked the C2 used by the malware for beaconing with the IP section of Behaviour in the virus total.
+- Also with the image above, we see that sofia machine accessed the malicious IP 177.53.143.89.
+- From the alert, with device action is "allowed". It means the log entry verifies that the connection was not blocked at the time of execution.
+
+
+Therefore, I accepted "accessed" on playbook.
+
+
+
+<img width="1101" height="377" alt="image" src="https://github.com/user-attachments/assets/f644c692-6d45-473a-8442-5655c17f2c9c" />
+
 
 # Containment
 
 <img width="803" height="423" alt="image" src="https://github.com/user-attachments/assets/115a5e80-e9db-4e9d-ad20-5945f9363ba7" />
 
 
-<img width="1101" height="377" alt="image" src="https://github.com/user-attachments/assets/f644c692-6d45-473a-8442-5655c17f2c9c" />
+I searched for the host information in endpoint security with the host IP address of the case 172.16.17.56. I cointained Sofia host machine. This will disconnect the machine from Network and prevent further spread of threats.
 
+<img width="1545" height="704" alt="image" src="https://github.com/user-attachments/assets/b93c0025-9ec5-409a-bb31-11c431c1f4e4" />
 
+# Add Artifacts
 
+## Artifacts = Evidence of behavior.
+They’re the traces that show how, when, and what happened on a system or in a network.
 
+- Malicious IP: 177.53.143.89
+- File Hash: 7ccf88c0bbe3b29bf19d877c4596a8d4
+- Malicious Url: multiwaretecnologia.com.br
+
+<img width="820" height="477" alt="image" src="https://github.com/user-attachments/assets/6d9df989-c59d-444c-b376-6a8b4ea84a41" />
+
+# Analysis Note
+
+- The investigation confirmed that the Excel file ORDER SHEET & SPEC.xlsm was malicious, containing obfuscated VBA macros that executed PowerShell commands to communicate with a remote Command and Control (C2) server at 177.53.143.89.
+- The machine Also made HTTP request to the malicious IP.
+- The host Sofia (172.16.17.56) was successfully contained to prevent further spread.
+- Artifacts and IoCs have been documented for broader environment scanning and future detection tuning.
+- Third-Party Threat Intelligence Correlation: VirusTotal, Hybrid Analysis, URLScan.io, Behavioral Analysis.
+  
+<img width="843" height="462" alt="image" src="https://github.com/user-attachments/assets/1369223e-3bfa-496e-95c4-5611d5f6a588" />
+
+# Finished Playbook
+
+<img width="796" height="377" alt="image" src="https://github.com/user-attachments/assets/25226664-713e-4803-b63c-cd85ff2b8b59" />
+<img width="1039" height="641" alt="image" src="https://github.com/user-attachments/assets/5402b2e1-9ae2-488a-ae87-143eec89f664" />
+
+# Closing The Ticket
+
+I closed the alert as "True Positive". Further steps need to be taken by the Tier 2 analysts. Also as shown below, the letsdefend score my analysis with a full point which means all investigation steps are well taken and I haope you will enjoy this project as well. 
+
+<img width="734" height="480" alt="image" src="https://github.com/user-attachments/assets/453e917b-a517-472e-b13b-351933e8a92c" />
+<img width="1656" height="614" alt="image" src="https://github.com/user-attachments/assets/d99a0d3b-2547-4086-b5b0-0682a88aacc4" />
