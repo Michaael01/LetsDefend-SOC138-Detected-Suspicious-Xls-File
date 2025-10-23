@@ -50,7 +50,12 @@ From the Endpoint Security, I the Terminal hisotry shows that command like chang
 ### VIRUS TOTAL
 
 
-I search with the file hash "7ccf88c0bbe3b29bf19d877c4596a8d4" in Virus Total free tool and the result was mind blowing.  I can see that 46/66 security vendors flagged this "XLSX" file  named ORDER SHEET & SPEC.xlsm as malicious. The vedors further labels the xlsx file as trojan generic.
+I search with the file hash "7ccf88c0bbe3b29bf19d877c4596a8d4" in Virus Total free tool and the result was mind blowing.
+- I can see that 46/66 security vendors flagged this "XLSX" file  named ORDER SHEET & SPEC.xlsm as malicious.
+- The file was last analysed jsut 3 days ago from the date of my findings
+- The file size is 2.66mb
+- The file type is XLSX
+- The vedors further labels the xlsx file as trojan generic. 
 
 Also from Virus Total, the Hispasec flagged the file as malcious. It further stated that the macro extracted from the document exhibit several signs of malicous intent such as:
 
@@ -83,6 +88,15 @@ Given these observations, the macros demonstrate behaviors commonly associated w
 
 
 The detail history section provides the relevant date the events of the file hash was last investigated. The section further revealed that the file hash was firstly investigated on 01.02.2020 up to recently which is 17.10.2025 whcih is a call for sensitization to soc analzýst to take note of the IP address and behavioural informations associated to this threat.
+- The details as well has various names which the file has been submitted or seen in the wild jsut to mention a few according to virusTotal
+  1. ORDER SHEET
+  2. SPEC.xlsm
+  3. mal.xlsm
+  4. virus.xlsm
+  5. infected.xlsm
+  6. kaka.xlsm
+  7. malware.xlsm
+
 
 ## From Playbook: URlSCAN
 
